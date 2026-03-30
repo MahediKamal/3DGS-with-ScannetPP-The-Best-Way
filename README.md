@@ -1,2 +1,22 @@
 # 3DGS-with-Scannet--The-Best-Way
-3D Gaussian Splatting on ScanNet++ Data: Best Practices and Workflow Guide. In this way splat coordinate will match the coordinate system with the Scannet++ coordinate. Same workflow for Triangle Splatting+, MeshSplatting
+3D Gaussian Splatting on ScanNet++ Data: Best Practices and Workflow Guide. In this way, the splat coordinate will match the coordinate system with the Scannet++ coordinate. Same workflow for Triangle Splatting+, MeshSplatting
+
+cd dslr
+
+mkdir splatData
+mkdir splatData/sparse
+mkdir splatData/sparse/0
+
+conda activate colmap
+
+colmap model_converter \
+--input_path dslr/colmap \
+--output_path splatData/sparse/0/ \
+--output_type BIN
+
+
+colmap image_undistorter \
+--image_path dslr/resized_images \
+--input_path splatData/sparse/0 \
+--output_path splatData/dense \
+--output_type COLMAP
