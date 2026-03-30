@@ -5,7 +5,7 @@ Note: If you try to use the resized_undistorted_images images provider in the ds
 ``
 
 ``
-First, go to a scere folder. For my case, it was 17268bec90. Then follow the steps
+First, go to any scene folder of the Scannet++ dataset. For my case, it was 17268bec90. Then follow the steps
 ``
 
 ```
