@@ -1,7 +1,7 @@
 # 3DGS with Scannet++: The Best Way
 
 ``
-Note: If you try to use the resized_undistorted_images images provider in the dsrl folder, that will also work to generate splat, but then the coordinate of the splat will not match the coordinate of the scannet++. If you try to match the coordinate in this way, then it will be much harder to do so.
+Note: If you try to use the resized_undistorted_images provider in the dsrl folder, that will also work to generate splat, but then the coordinate of the splat will not match the coordinate of the scannet++. If you try to match the coordinate after that, then it will be much harder to do so. But if we follow the process below, we will have a perfect splat that will match the scannet++ coordinate.
 ``
 
 ``
