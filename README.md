@@ -6,6 +6,8 @@ cd dslr
 mkdir splatData
 mkdir splatData/sparse
 mkdir splatData/sparse/0
+mkdir splatData/dense
+
 
 conda activate colmap
 
@@ -18,5 +20,8 @@ colmap model_converter \
 colmap image_undistorter \
 --image_path dslr/resized_images \
 --input_path splatData/sparse/0 \
---output_path splatData/dense \
+--output_path splatData/dense/0 \
 --output_type COLMAP
+
+
+python train.py -s <path_to_scenes> -m <output_model_path> --indoor --eval
