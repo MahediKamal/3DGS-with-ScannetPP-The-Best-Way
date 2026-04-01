@@ -49,7 +49,7 @@ colmap image_undistorter \
 ```
 
 ``
-Now the data is ready to use. The dense folder is the main data that we will be using for splat training. In my case, I gave the following command to train the splat with the prepared data
+Inside splatData/dense/sparse, there are some files. Move those files inside splatData/dense/sparse/0. Now the data is ready to use. The dense folder is the main data that we will be using for splat training. In my case, I gave the following command to train the splat with the prepared data
 ``
 ```
 python train.py -s /workspace/mahedi/Data/scannetPP/17268bec90/splatData/dense -m outputModel/scannetPP/17268bec90 --indoor --eval
