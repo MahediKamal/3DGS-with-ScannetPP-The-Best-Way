@@ -9,7 +9,7 @@ First, go to any scene folder of the Scannet++ dataset. For my case, it was 1726
 ``
 
 ```
-cd dslr
+cd 17268bec90
 ```
 
 ```
