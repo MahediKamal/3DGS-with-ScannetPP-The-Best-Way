@@ -4,6 +4,8 @@
 Note: If you try to use the resized_undistorted_images provider in the dsrl folder, that will also work to generate splat, but then the coordinate of the splat will not match the coordinate of the scannet++. If you try to match the coordinate after that, then it will be much harder to do so. But if we follow the process below, we will have a perfect splat that will match the scannet++ coordinate.
 ``
 
+## Using dslr images
+
 ``
 First, go to any scene folder of the Scannet++ dataset. For my case, it was 17268bec90. Then follow the steps
 ``
@@ -58,3 +60,48 @@ python train.py -s /workspace/mahedi/Data/scannetPP/17268bec90/splatData/dense -
 ``
 Note: If you have a GPU shortage, you can resize the images, and the same workflow will work
 ``
+
+
+## Using iphone images
+
+```
+mkdir ScannetPP/data/39f36da05b/iphone/mk_splatdata
+mkdir ScannetPP/data/39f36da05b/iphone/mk_splatdata/images
+mkdir ScannetPP/data/39f36da05b/iphone/mk_splatdata/sparse
+mkdir ScannetPP/data/39f36da05b/iphone/mk_splatdata/sparse/0
+mkdir ScannetPP/data/39f36da05b/iphone/mk_splatdata/dense
+```
+
+``
+extract frmaes
+``
+
+```
+python extract_scannetpp_iphone_frames.py
+        --iphone-dir ScannetPP/data/39f36da05b/iphone/
+        --output-dir ScannetPP/data/39f36da05b/iphone/mk_splatdata/images/
+```
+
+```
+conda activate colmap
+```
+
+
+``
+Now, as we are in the colmap environment, we can give the following commands to prepare the data we need for splatting
+``
+
+```
+colmap model_converter \
+--input_path ScannetPP/data/39f36da05b/iphone/colmap/ \
+--output_path ScannetPP/data/39f36da05b/iphone/mk_splatdata/sparse/0 \
+--output_type BIN
+```
+
+```
+colmap image_undistorter \
+--image_path ScannetPP/data/39f36da05b/iphone/mk_splatdata/images \
+--input_path ScannetPP/data/39f36da05b/iphone/mk_splatdata/sparse/0 \
+--output_path ScannetPP/data/39f36da05b/iphone/mk_splatdata/dense \
+--output_type COLMAP
+```
